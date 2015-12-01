@@ -5,37 +5,28 @@ import android.os.Bundle;
 import java.util.List;
 
 import lalala.mvp.AppContext;
+import lalala.mvp.common.Presenter;
 
 /**
  * Created by lgarbarini on 1/12/15.
  */
-public class FormPresenter implements FieldsFinder.OnFieldsFoundListener {
+public class FormPresenter extends Presenter<FormView> implements FieldsFinder.OnFieldsFoundListener {
 
-    FormView view;
-    AppContext appContext;
 
-    public FormPresenter(Bundle bundle) {
+    @Override
+    public void init(Bundle bundle) {
         if (bundle == null) {
             appContext = new AppContext();
         }
         else {
-            appContext = bundle.getParcelable("app_context");
+            super.init(bundle);
         }
     }
 
-    public void save(Bundle bundle) {
-        bundle.putParcelable("app_context", appContext);
-    }
-
+    @Override
     public void linkView(FormView view) {
-        this.view = view;
+        super.linkView(view);
         new FieldsFinder().findFields(this);
-    }
-
-    public void unlinkView(FormView view) {
-        if (this.view == view) {
-            this.view = null;
-        }
     }
 
     public void onFieldSelected(String field) {

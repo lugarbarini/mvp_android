@@ -14,12 +14,13 @@ import android.widget.Button;
 
 import java.util.List;
 
+import lalala.mvp.AbstractActivity;
 import lalala.mvp.R;
+import lalala.mvp.common.RequiresPresenter;
 import lalala.mvp.review.ReviewActivity;
 
-public class FormActivity extends AppCompatActivity implements FormView, View.OnClickListener {
-
-    FormPresenter presenter;
+@RequiresPresenter(FormPresenter.class)
+public class FormActivity extends AbstractActivity<FormPresenter> implements FormView, View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,34 +36,6 @@ public class FormActivity extends AppCompatActivity implements FormView, View.On
                 presenter.onAddField();
             }
         });
-
-        presenter = (FormPresenter) getLastCustomNonConfigurationInstance();
-        if (presenter == null) {
-            presenter = new FormPresenter(savedInstanceState != null ? savedInstanceState : getIntent().getExtras());
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        presenter.linkView(this);
-    }
-
-    @Override
-    protected void onPause() {
-        presenter.unlinkView(this);
-        super.onPause();
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        presenter.save(outState);
-    }
-
-    @Override
-    public Object onRetainCustomNonConfigurationInstance() {
-        return presenter;
     }
 
     @Override
