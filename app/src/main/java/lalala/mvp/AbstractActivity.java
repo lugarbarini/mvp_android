@@ -18,12 +18,19 @@ public abstract class AbstractActivity<T extends Presenter<?>> extends AppCompat
 
     protected PresenterDelegate<?, T> delegate;
 
+    @SuppressWarnings("unchecked")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        PresenterDelegate<?, T> oldDelegate = (PresenterDelegate<?, T>) getLastCustomNonConfigurationInstance();
+
         delegate = createDelegate();
-        delegate.restore(savedInstanceState == null ? getIntent().getExtras() : savedInstanceState);
+        if (oldDelegate == null) {
+            delegate.restore(savedInstanceState == null ? getIntent().getExtras() : savedInstanceState);
+        } else {
+            delegate.restorePresenter(oldDelegate.getPresenter());
+        }
     }
 
     @Override
@@ -42,6 +49,11 @@ public abstract class AbstractActivity<T extends Presenter<?>> extends AppCompat
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         delegate.save(outState);
+    }
+
+    @Override
+    public Object onRetainCustomNonConfigurationInstance() {
+        return delegate;
     }
 
     protected abstract PresenterDelegate<?, T> createDelegate();

@@ -13,6 +13,7 @@ import lalala.mvp.common.presenter.Presenter;
 public class FormPresenter extends Presenter<FormView> implements FieldsFinder.OnFieldsFoundListener {
 
     private FormResolver resolver;
+    private boolean requesting;
 
     @Override
     public void init(Bundle bundle) {
@@ -28,10 +29,14 @@ public class FormPresenter extends Presenter<FormView> implements FieldsFinder.O
     @Override
     public void linkView(FormView view) {
         super.linkView(view);
-        if (appContext.getFields().isEmpty()) {
-            new FieldsFinder().findFields(this);
-        } else {
-            onFieldsFound(appContext.getFields());
+
+        if (!requesting) {
+            if (appContext.getFields().isEmpty()) {
+                requesting = true;
+                new FieldsFinder().findFields(this);
+            } else {
+                onFieldsFound(appContext.getFields());
+            }
         }
     }
 
@@ -50,6 +55,7 @@ public class FormPresenter extends Presenter<FormView> implements FieldsFinder.O
 
     @Override
     public void onFieldsFound(List<FormField> fieldsList) {
+        requesting = false;
         appContext.setFields(fieldsList);
         if (view != null) {
             view.createForm(fieldsList);

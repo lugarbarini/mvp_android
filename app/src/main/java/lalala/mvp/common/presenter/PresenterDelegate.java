@@ -8,13 +8,17 @@ import android.os.Bundle;
  */
 public class PresenterDelegate<V extends PresentingView, T extends Presenter<V>> {
 
-    private final T presenter;
+    private T presenter;
     private final V view;
 
 
     public PresenterDelegate(V view, T presenter) {
         this.presenter = presenter;
         this.view = view;
+    }
+
+    public void restorePresenter(T oldPresenter) {
+        this.presenter = oldPresenter;
     }
 
     public void linkView() {
