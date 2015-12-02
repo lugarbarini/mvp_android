@@ -1,6 +1,5 @@
 package lalala.mvp.form;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,10 +15,7 @@ import java.util.List;
 import lalala.mvp.AbstractActivity;
 import lalala.mvp.R;
 import lalala.mvp.common.PresenterDelegate;
-import lalala.mvp.common.RequiresPresenter;
-import lalala.mvp.review.ReviewActivity;
 
-@RequiresPresenter(FormPresenter.class)
 public class FormActivity extends AbstractActivity<FormPresenter> implements FormView, View.OnClickListener {
 
     @Override
@@ -87,13 +83,6 @@ public class FormActivity extends AbstractActivity<FormPresenter> implements For
         ViewGroup view = (ViewGroup) findViewById(R.id.content_main);
         createField(view, field);
         Snackbar.make(view, "New field: " + field.label, Snackbar.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void goToReview(Bundle extras) {
-        Intent intent = new Intent(this, ReviewActivity.class);
-        intent.putExtras(extras);
-        startActivity(intent);
     }
 
     @Override

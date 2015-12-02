@@ -19,11 +19,11 @@ public class Presenter<T extends PresentingView> {
     public void init(Bundle bundle) {
         if (bundle == null)
             throw new IllegalArgumentException();
-        appContext = bundle.getParcelable("app_context");
+        appContext = bundle.getParcelable(AppContext.SAVE_KEY);
     }
 
     public void save(Bundle bundle) {
-        bundle.putParcelable("app_context", appContext);
+        bundle.putParcelable(AppContext.SAVE_KEY, appContext);
     }
 
     public void linkView(T view) {

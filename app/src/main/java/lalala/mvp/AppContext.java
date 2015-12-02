@@ -13,8 +13,10 @@ import lalala.mvp.form.FormField;
  */
 public class AppContext implements Parcelable {
 
-    List<FormField> fields;
-    String selectedField;
+    public static final String SAVE_KEY = "app_context";
+
+    protected List<FormField> fields;
+    protected String selectedField;
 
     public AppContext() {
         fields = new ArrayList<>();
@@ -63,4 +65,5 @@ public class AppContext implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(selectedField);
     }
+
 }

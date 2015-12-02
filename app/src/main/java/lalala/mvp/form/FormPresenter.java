@@ -12,6 +12,7 @@ import lalala.mvp.common.Presenter;
  */
 public class FormPresenter extends Presenter<FormView> implements FieldsFinder.OnFieldsFoundListener {
 
+    private FormResolver resolver;
 
     @Override
     public void init(Bundle bundle) {
@@ -20,6 +21,8 @@ public class FormPresenter extends Presenter<FormView> implements FieldsFinder.O
         } else {
             super.init(bundle);
         }
+
+        resolver = new FormResolver();
     }
 
     @Override
@@ -27,20 +30,14 @@ public class FormPresenter extends Presenter<FormView> implements FieldsFinder.O
         super.linkView(view);
         if (appContext.getFields().isEmpty()) {
             new FieldsFinder().findFields(this);
-        }
-        else {
+        } else {
             onFieldsFound(appContext.getFields());
         }
     }
 
     public void onFieldSelected(String field) {
         appContext.setSelectedField(field);
-
-        if (view != null) {
-            Bundle extra = new Bundle();
-            extra.putParcelable("app_context", appContext);
-            view.goToReview(extra);
-        }
+        resolver.onFieldSelected(appContext, view);
     }
 
     public void onAddField() {

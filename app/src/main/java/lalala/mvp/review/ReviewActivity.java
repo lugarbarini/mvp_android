@@ -6,9 +6,7 @@ import android.widget.TextView;
 import lalala.mvp.AbstractActivity;
 import lalala.mvp.R;
 import lalala.mvp.common.PresenterDelegate;
-import lalala.mvp.common.RequiresPresenter;
 
-@RequiresPresenter(ReviewPresenter.class)
 public class ReviewActivity extends AbstractActivity<ReviewPresenter> implements ReviewView {
 
     @Override
