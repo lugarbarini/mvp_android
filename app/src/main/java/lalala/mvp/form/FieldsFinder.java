@@ -17,7 +17,8 @@ public class FieldsFinder {
 
     public void findFields(final OnFieldsFoundListener listener) {
         new Handler().postDelayed(new Runnable() {
-            @Override public void run() {
+            @Override
+            public void run() {
                 listener.onFieldsFound(createArrayList());
             }
         }, 2000);

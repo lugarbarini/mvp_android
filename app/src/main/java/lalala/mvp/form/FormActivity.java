@@ -4,11 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
@@ -16,6 +15,7 @@ import java.util.List;
 
 import lalala.mvp.AbstractActivity;
 import lalala.mvp.R;
+import lalala.mvp.common.PresenterDelegate;
 import lalala.mvp.common.RequiresPresenter;
 import lalala.mvp.review.ReviewActivity;
 
@@ -33,9 +33,14 @@ public class FormActivity extends AbstractActivity<FormPresenter> implements For
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                presenter.onAddField();
+                getPresenter().onAddField();
             }
         });
+    }
+
+    @Override
+    protected PresenterDelegate<?, FormPresenter> createDelegate() {
+        return new PresenterDelegate<FormView, FormPresenter>(this, new FormPresenter());
     }
 
     @Override
@@ -94,6 +99,6 @@ public class FormActivity extends AbstractActivity<FormPresenter> implements For
     @Override
     public void onClick(View v) {
         Button view = (Button) v;
-        presenter.onFieldSelected(view.getText().toString());
+        getPresenter().onFieldSelected(view.getText().toString());
     }
 }

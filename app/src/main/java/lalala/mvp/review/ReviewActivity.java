@@ -5,6 +5,7 @@ import android.widget.TextView;
 
 import lalala.mvp.AbstractActivity;
 import lalala.mvp.R;
+import lalala.mvp.common.PresenterDelegate;
 import lalala.mvp.common.RequiresPresenter;
 
 @RequiresPresenter(ReviewPresenter.class)
@@ -14,6 +15,11 @@ public class ReviewActivity extends AbstractActivity<ReviewPresenter> implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review);
+    }
+
+    @Override
+    protected PresenterDelegate<?, ReviewPresenter> createDelegate() {
+        return new PresenterDelegate<ReviewView, ReviewPresenter>(this, new ReviewPresenter());
     }
 
     @Override

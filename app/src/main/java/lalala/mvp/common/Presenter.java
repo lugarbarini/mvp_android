@@ -3,7 +3,6 @@ package lalala.mvp.common;
 import android.os.Bundle;
 
 import lalala.mvp.AppContext;
-import lalala.mvp.review.ReviewView;
 
 /**
  * Created by lgarbarini on 1/12/15.
@@ -18,7 +17,7 @@ public class Presenter<T extends PresentingView> {
     }
 
     public void init(Bundle bundle) {
-        if(bundle == null)
+        if (bundle == null)
             throw new IllegalArgumentException();
         appContext = bundle.getParcelable("app_context");
     }

@@ -12,6 +12,8 @@ import lalala.mvp.common.PresentingView;
 public interface FormView extends PresentingView {
 
     void createForm(List<FormField> fields);
+
     void onFieldAdded(FormField field);
+
     void goToReview(Bundle extras);
 }

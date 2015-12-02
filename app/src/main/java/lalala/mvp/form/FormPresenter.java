@@ -17,8 +17,7 @@ public class FormPresenter extends Presenter<FormView> implements FieldsFinder.O
     public void init(Bundle bundle) {
         if (bundle == null) {
             appContext = new AppContext();
-        }
-        else {
+        } else {
             super.init(bundle);
         }
     }
@@ -26,7 +25,12 @@ public class FormPresenter extends Presenter<FormView> implements FieldsFinder.O
     @Override
     public void linkView(FormView view) {
         super.linkView(view);
-        new FieldsFinder().findFields(this);
+        if (appContext.getFields().isEmpty()) {
+            new FieldsFinder().findFields(this);
+        }
+        else {
+            onFieldsFound(appContext.getFields());
+        }
     }
 
     public void onFieldSelected(String field) {
@@ -40,7 +44,7 @@ public class FormPresenter extends Presenter<FormView> implements FieldsFinder.O
     }
 
     public void onAddField() {
-        FormField field = new FormField("Item " + (appContext.getFields().size()+1));
+        FormField field = new FormField("Item " + (appContext.getFields().size() + 1));
         appContext.getFields().add(field);
         if (view != null) {
             view.onFieldAdded(field);
