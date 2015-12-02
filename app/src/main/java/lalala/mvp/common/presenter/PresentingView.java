@@ -1,6 +1,6 @@
-package lalala.mvp.common;
+package lalala.mvp.common.presenter;
 
-import lalala.mvp.resolver.FlowStepExecutor;
+import lalala.mvp.common.resolver.FlowStepExecutor;
 
 /**
  * Created by lgarbarini on 1/12/15.

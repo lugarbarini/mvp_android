@@ -14,7 +14,7 @@ import java.util.List;
 
 import lalala.mvp.AbstractActivity;
 import lalala.mvp.R;
-import lalala.mvp.common.PresenterDelegate;
+import lalala.mvp.common.presenter.PresenterDelegate;
 
 public class FormActivity extends AbstractActivity<FormPresenter> implements FormView, View.OnClickListener {
 

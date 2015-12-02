@@ -1,4 +1,4 @@
-package lalala.mvp.resolver;
+package lalala.mvp.common.resolver;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;

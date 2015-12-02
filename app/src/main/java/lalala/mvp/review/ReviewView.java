@@ -1,6 +1,6 @@
 package lalala.mvp.review;
 
-import lalala.mvp.common.PresentingView;
+import lalala.mvp.common.presenter.PresentingView;
 
 /**
  * Created by lgarbarini on 1/12/15.

@@ -5,10 +5,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
-import lalala.mvp.common.Presenter;
-import lalala.mvp.common.PresenterDelegate;
-import lalala.mvp.resolver.ActivityFlowStep;
-import lalala.mvp.resolver.FlowStepExecutor;
+import lalala.mvp.common.presenter.Presenter;
+import lalala.mvp.common.presenter.PresenterDelegate;
+import lalala.mvp.common.resolver.ActivityFlowStep;
+import lalala.mvp.common.resolver.FlowStepExecutor;
 
 /**
  * Generic activity

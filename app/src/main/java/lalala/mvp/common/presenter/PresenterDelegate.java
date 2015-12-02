@@ -1,4 +1,4 @@
-package lalala.mvp.common;
+package lalala.mvp.common.presenter;
 
 import android.os.Bundle;
 

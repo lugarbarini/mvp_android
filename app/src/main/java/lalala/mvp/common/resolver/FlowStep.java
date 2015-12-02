@@ -1,4 +1,4 @@
-package lalala.mvp.resolver;
+package lalala.mvp.common.resolver;
 
 /**
  * Defines the next step in the flow

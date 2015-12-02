@@ -5,7 +5,7 @@ import android.widget.TextView;
 
 import lalala.mvp.AbstractActivity;
 import lalala.mvp.R;
-import lalala.mvp.common.PresenterDelegate;
+import lalala.mvp.common.presenter.PresenterDelegate;
 
 public class ReviewActivity extends AbstractActivity<ReviewPresenter> implements ReviewView {
 

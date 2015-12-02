@@ -5,7 +5,7 @@ import android.os.Bundle;
 import java.util.List;
 
 import lalala.mvp.AppContext;
-import lalala.mvp.common.Presenter;
+import lalala.mvp.common.presenter.Presenter;
 
 /**
  * Created by lgarbarini on 1/12/15.

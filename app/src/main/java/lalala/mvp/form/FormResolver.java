@@ -1,8 +1,8 @@
 package lalala.mvp.form;
 
 import lalala.mvp.AppContext;
-import lalala.mvp.resolver.AbstractFlowResolver;
-import lalala.mvp.resolver.FlowStepExecutor;
+import lalala.mvp.common.resolver.AbstractFlowResolver;
+import lalala.mvp.common.resolver.FlowStepExecutor;
 import lalala.mvp.review.ReviewActivity;
 
 /**
